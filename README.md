@@ -12,6 +12,8 @@
 
 [**TL;DR**] PIWM is a lightweight, physics‑informed generative model that predicts future images from the current image and actions — enabling forecasting with strong existential and temporal consistency in dynamic environments.
 
+The following implementation is based on [DIAMOND](https://github.com/eloialonso/diamond/tree/csgo?tab=readme-ov-file).
+
 ## TODO &#128203;<a name="todo"></a>
 - [ ] One-page-paper upload (to be done before `[2025/10/30]`)
 - [ ] What-is-it video create (to be done before `[2025/10/15]`)
@@ -105,4 +107,7 @@ The provided configuration took around 18 hours on an RTX 4090.
 }
 ```
 
----
+## Credits
+
+- [https://github.com/eloialonso/diamond](https://github.com/eloialonso/diamond/tree/csgo?tab=readme-ov-file)
+- [https://github.com/Farama-Foundation/HighwayEnv](https://github.com/Farama-Foundation/HighwayEnv)

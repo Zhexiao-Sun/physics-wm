@@ -12,6 +12,12 @@
 
 [**TL;DR**] PIWM is a lightweight, physics‑informed generative model that predicts future images from the current image and actions — enabling forecasting with strong existential and temporal consistency in dynamic environments.
 
+## TODO &#128203;<a name="todo"></a>
+- [ ] One-page-paper upload (to be done before `[2025/10/30]`)
+- [ ] What-is-it video create (to be done before `[2025/10/15]`)
+- [x] Dataset release
+- [x] Code release
+- [x] Preprint release
 
 ## Installation
 - Quick start with [Miniconda](https://docs.anaconda.com/free/miniconda/miniconda-install/):
@@ -58,7 +64,6 @@ To get the data ready for training on your machine:
 - **Step 2**: Then edit [config/env/piwm.yaml](config/env/piwm.yaml) and set:
 
         `path_data_low_res` to `<your_path>/highway_dataset_processed/low_res`
-
         `path_data_full_res` to `<your_path>/highway_dataset_processed/full_res`
 
 Then you can launch a training run with
@@ -101,9 +106,3 @@ The provided configuration took around 18 hours on an RTX 4090.
 ```
 
 ---
-## TODO &#128203;<a name="todo"></a>
-- [ ] One-page-paper upload (to be done before `[2025/10/30]`)
-- [ ] What-is-it video create (to be done before `[2025/10/15]`)
-- [ ] Dataset release (to be done before `[2025/10/15]`)
-- [x] Code release (to be done before `[2025/09/30]`)
-- [x] Preprint release

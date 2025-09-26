@@ -26,26 +26,18 @@
 
 - To quickly play with our trained physics‑informed BEV world model (PIWM): the first run will automatically download the pretrained model and several spawn points from the [HuggingFace Hub 🤗](https://huggingface.co/TUM/PIWM_ckpt/tree/main). Please reserve ~1.55GB of disk space. 
 
-```bash
-python src/play.py
-```
+    ```bash
+    python src/play.py
+    ```
 
 When the download completes, press Enter to start. Use WASD and Space to control.
 
-<video src="./assets/top.mp4" controls playsinline loop muted style="max-width: 100%; width: 760px; display: block; margin: 16px auto;">
-  <source src="./assets/top.mp4" type="video/mp4">
-  Your browser does not support the video tag. Here is a direct link: <a href="./assets/top.mp4">top.mp4</a>
-</video>
+- The default fast config runs best on a CUDA GPU (>12 FPS on an RTX 4080 laptop). The model also runs faster if compiled (>21 FPS on an RTX 4080 Laptop).
 
-[Direct video link (assets/top.mp4)](./assets/top.mp4)
+    ```bash
+    python src/play.py --compile
+    ```
 
-
-
-The default fast config runs best on a CUDA GPU (>12 FPS on an RTX 4080 laptop). The model also runs faster if compiled (>21 FPS on an RTX 4080 Laptop).
-
-```bash
-python src/play.py --compile
-```
 All demo videos and performance measurements use the [`fast`](config/world_model_env/fast.yaml) config referenced by the [`trainer`](config/trainer.yaml). You can switch to [`higher_quality`](config/world_model_env/higher_quality.yaml) for improved quality at reduced speed.
 
 ## Training
@@ -64,7 +56,9 @@ To get the data ready for training on your machine:
     ```
 
 - **Step 2**: Then edit [config/env/piwm.yaml](config/env/piwm.yaml) and set:
+
         `path_data_low_res` to `<your_path>/highway_dataset_processed/low_res`
+
         `path_data_full_res` to `<your_path>/highway_dataset_processed/full_res`
 
 Then you can launch a training run with
@@ -78,19 +72,18 @@ The provided configuration took around 18 hours on an RTX 4090.
 ## Advanced
 
 - Adjust Soft Mask related weights used during training and inference in [`piwm.yaml`](config/agent/piwm.yaml).
-- Tune the sampling parameters in [`fast.yaml`](config/world_model_env/fast.yaml).
 
-Our released model uses:
-```
-mask_w_blue:  1.0 for training, 0.55 for inference
-mask_w_green: 0.8 for training, 0.45 for inference
-```
+    Our released model uses:
+    ```
+    mask_w_blue:  1.0 for training, 0.55 for inference
+    mask_w_green: 0.8 for training, 0.45 for inference
+    ```
 
-Enable zero-shot Warm Start to inject contextual information at inference time and improve stability for smaller models:
+- Enable zero-shot Warm Start to inject contextual information at inference time and improve stability for smaller models:
 
-```bash
-python src/play.py --warmstart
-```
+    ```bash
+    python src/play.py --warmstart
+    ```
 
 ## Citation
 

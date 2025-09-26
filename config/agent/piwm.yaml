@@ -1,0 +1,72 @@
+_target_: agent.AgentConfig
+
+denoiser:
+  _target_: models.diffusion.DenoiserConfig
+  sigma_data: 0.5
+  sigma_offset_noise: 0.1
+  noise_previous_obs: true
+  upsampling_factor: null
+
+  # mask params
+  mask_gain_train: 1.0  
+
+  mask_gain_infer: 0.45 
+  mask_w_blue: 0.55  # 1.0 for training, 0.55 for inference
+  mask_w_green: 0.45  # 0.8 for training, 0.45 for inference
+
+  mask_sigma_global_ratio: 0.35  # global Gaussian sigma ratio
+  mask_sigma_ego_scale: 0.50  # ego radial sigma scale
+  mask_sigma_min_px: 2.0  
+  mask_downsample_mode: bicubic 
+
+  mask_dropout_train: 0.25
+
+  inner_model:
+    _target_: models.diffusion.InnerModelConfig
+    img_channels: 3
+    num_steps_conditioning: 4
+    cond_channels: 2048
+    extra_cond_channels: 1
+    depths:
+    - 2
+    - 2
+    - 2
+    - 2
+    channels:
+    - 128
+    - 256
+    - 512
+    - 1024
+    attn_depths:
+    - 0
+    - 0
+    - 1 
+    - 1
+
+upsampler:
+  _target_: models.diffusion.DenoiserConfig
+  sigma_data: 0.5
+  sigma_offset_noise: 0.1
+  noise_previous_obs: false
+  upsampling_factor: 5
+  inner_model:
+    _target_: models.diffusion.InnerModelConfig
+    img_channels: 3
+    num_steps_conditioning: 1
+    cond_channels: 2048
+    depths:
+    - 2
+    - 2
+    - 2
+    - 2
+    channels:
+    - 64
+    - 64
+    - 128
+    - 256
+    attn_depths:
+    - 0
+    - 0
+    - 0
+    - 1
+  

@@ -1,0 +1,9 @@
+train:
+  id: piwm
+  size: [150, 600]
+num_actions: 51
+
+path_data_low_res: null
+path_data_full_res: null
+
+keymap: piwm

@@ -205,3 +205,30 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Custom
+wandb
+.vscode
+outputs
+results/figures
+slurm*
+experiments
+checkpoints
+saved_runs
+dataset
+images/*
+*.png
+
+highway_dataset/
+highwayenv_data_processed/
+outputs/
+*.mp4
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook
+.ipynb_checkpoints
+

@@ -16,13 +16,13 @@
 ## Installation
 - Quick start with [Miniconda](https://docs.anaconda.com/free/miniconda/miniconda-install/):
 
-```bash
-git clone git@github.com:TUM-AVS/physics-wm.git
-cd physics-wm
-conda create -n PIWM python=3.10
-conda activate PIWM
-pip install -r requirements.txt
-```
+    ```bash
+    git clone git@github.com:TUM-AVS/physics-wm.git
+    cd physics-wm
+    conda create -n PIWM python=3.10
+    conda activate PIWM
+    pip install -r requirements.txt
+    ```
 
 - To quickly play with our trained physics‑informed BEV world model (PIWM): the first run will automatically download the pretrained model and several spawn points from the [HuggingFace Hub 🤗](https://huggingface.co/TUM/PIWM_ckpt/tree/main). Please reserve ~1.55GB of disk space. 
 
@@ -56,16 +56,16 @@ We used a random test split of 200 episodes of 1000 steps (specified in `test_sp
 To get the data ready for training on your machine:
 - **Step 1**: Download the preprocessed dataset from the [HuggingFace Hub 🤗](https://huggingface.co/datasets/dingrui17/highwayEnv_wm/blob/main/highway_dataset_processed.zip) and unzip it (~550GB disk space).
 
-Dataset structure:
-```bash
-your_path/highway_dataset_processed
-├── full_res
-└── low_res
-```
+     Dataset structure:
+     ```bash
+     your_path/highway_dataset_processed
+     ├── full_res
+     └── low_res
+    ```
 
 - **Step 2**: Then edit [config/env/piwm.yaml](config/env/piwm.yaml) and set:
-    `path_data_low_res` to `<your_path>/highway_dataset_processed/low_res`
-    `path_data_full_res` to `<your_path>/highway_dataset_processed/full_res`
+        `path_data_low_res` to `<your_path>/highway_dataset_processed/low_res`
+        `path_data_full_res` to `<your_path>/highway_dataset_processed/full_res`
 
 Then you can launch a training run with
 

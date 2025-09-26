@@ -15,6 +15,7 @@
 
 ## Installation
 - Quick start with [Miniconda](https://docs.anaconda.com/free/miniconda/miniconda-install/):
+
 ```bash
 git clone git@github.com:TUM-AVS/physics-wm.git
 cd physics-wm
@@ -24,16 +25,19 @@ pip install -r requirements.txt
 ```
 
 - To quickly play with our trained physics‑informed BEV world model (PIWM): the first run will automatically download the pretrained model and several spawn points from the [HuggingFace Hub 🤗](https://huggingface.co/TUM/PIWM_ckpt/tree/main). Please reserve ~1.55GB of disk space. 
+
 ```bash
 python src/play.py
 ```
 
 When the download completes, press Enter to start. Use WASD and Space to control.
 
-
 <video src="./assets/top.mp4" controls playsinline loop muted style="max-width: 100%; width: 760px; display: block; margin: 16px auto;">
+  <source src="./assets/top.mp4" type="video/mp4">
   Your browser does not support the video tag. Here is a direct link: <a href="./assets/top.mp4">top.mp4</a>
 </video>
+
+[Direct video link (assets/top.mp4)](./assets/top.mp4)
 
 
 
@@ -44,11 +48,9 @@ python src/play.py --compile
 ```
 All demo videos and performance measurements use the [`fast`](config/world_model_env/fast.yaml) config referenced by the [`trainer`](config/trainer.yaml). You can switch to [`higher_quality`](config/world_model_env/higher_quality.yaml) for improved quality at reduced speed.
 
-To adjust the sampling parameters yourself (number of denoising steps, stochasticity, order, etc) of the trained diffusion world model, for instance to trade off sampling speed and quality, edit the file `config/world_model_env/fast.yaml`.
-
 ## Training
 
-We collect 2,000 episodes in HighwayEnv with an MCTS agent, yielding 2 million BEV frames with aligned states and actions as the training dataset.
+We collected 2,000 episodes in HighwayEnv with an MCTS agent, yielding 2 million BEV frames with aligned states and actions as the training dataset.
 We used a random test split of 200 episodes of 1000 steps (specified in `test_split.txt`), and the remaining 1,800 episodes for training.
 
 To get the data ready for training on your machine:
@@ -66,6 +68,7 @@ your_path/highway_dataset_processed
     `path_data_full_res` to `<your_path>/highway_dataset_processed/full_res`
 
 Then you can launch a training run with
+
 ```bash
 python src/main.py
 ```
@@ -74,8 +77,8 @@ The provided configuration took around 18 hours on an RTX 4090.
 
 ## Advanced
 
-Adjust Soft Mask related weights used during training and inference in `config/agent/piwm.yaml`.
-Tune the sampling parameters in `config/world_model_env/fast.yaml`.
+- Adjust Soft Mask related weights used during training and inference in [`piwm.yaml`](config/agent/piwm.yaml).
+- Tune the sampling parameters in [`fast.yaml`](config/world_model_env/fast.yaml).
 
 Our released model uses:
 ```
@@ -84,6 +87,7 @@ mask_w_green: 0.8 for training, 0.45 for inference
 ```
 
 Enable zero-shot Warm Start to inject contextual information at inference time and improve stability for smaller models:
+
 ```bash
 python src/play.py --warmstart
 ```

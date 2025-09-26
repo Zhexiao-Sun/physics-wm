@@ -38,14 +38,15 @@ def check_args(args: argparse.Namespace) -> None:
 def prepare_play_mode(cfg: DictConfig, args: argparse.Namespace) -> PlayEnv:
 
     # Hugging Face
-    # path_hf = Path(snapshot_download(repo_id="TODO_ORG/TODO_PIWM_REPO", allow_patterns=["checkpoints/**", "assets/spawn/**"]))
+    repo_id = "TUM/PIWM_ckpt"
+    path_hf = Path(snapshot_download(repo_id=repo_id, allow_patterns=["PIWM/**"]))
 
-    path_ckpt = Path("/home/zhexiao/Documents/SA/v3/PIWM_v2/outputs/2025-08-24/softm_400M_2000/checkpoints/agent_versions/agent_epoch_00040.pt")
-    spawn_dir = Path("/home/zhexiao/Documents/SA/PIWM_v1/highway_2000/spawn")
+    path_ckpt = path_hf / "PIWM/model/piwm.pt"
+    spawn_dir = path_hf / "PIWM/spwan"
 
     # Override config
-    cfg.agent = OmegaConf.load("config/agent/piwm.yaml")
-    cfg.env = OmegaConf.load("config/env/piwm.yaml")
+    cfg.agent = OmegaConf.load(path_hf / "PIWM/config/agent/piwm.yaml") 
+    cfg.env   = OmegaConf.load(path_hf / "PIWM/config/env/piwm.yaml")  
 
     if torch.cuda.is_available():
         device = torch.device("cuda:0")

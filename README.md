@@ -23,7 +23,7 @@
 - Quick start with [Miniconda](https://docs.anaconda.com/free/miniconda/miniconda-install/):
 
     ```bash
-    git clone git@github.com:TUM-AVS/physics-wm.git
+    git clone https://github.com/TUM-AVS/physics-wm.git
     cd physics-wm
     conda create -n PIWM python=3.10
     conda activate PIWM

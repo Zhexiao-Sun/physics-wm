@@ -27,8 +27,8 @@ common:
   resume: False # do not modify, set by scripts/resume.sh only.
 
 checkpointing:
-  save_agent_every: 5
-  num_to_keep: 11  # number of checkpoints to keep, use null to disable
+  save_agent_every: 2
+  num_to_keep: 7  # number of checkpoints to keep, use null to disable
 
 collection:
   train:
@@ -52,29 +52,29 @@ static_dataset:
 
 training:
   should: True
-  num_final_epochs: 600
+  num_final_epochs: 48
   cache_in_ram: False
   num_workers_data_loaders: 4
   compile_wm: False
 
 evaluation:
   should: True
-  every: 20
+  every: 12
 
 denoiser:
   training:
     num_autoregressive_steps: 4
     start_after_epochs: 0
-    steps_first_epoch: 100
+    steps_first_epoch: 400
     steps_per_epoch: 200
     sample_weights: null
-    batch_size: 2 #16
-    grad_acc_steps: 1
+    batch_size: 10
+    grad_acc_steps: 8
     lr_warmup_steps: 100
     max_grad_norm: 10.0
 
   optimizer:
-    lr: 5e-5 # 1e-4
+    lr: 5e-5 
     weight_decay: 1e-2
     eps: 1e-8
   
@@ -89,8 +89,8 @@ upsampler:
   training:
     num_autoregressive_steps: 1
     start_after_epochs: 0
-    steps_first_epoch: 400
-    steps_per_epoch: 400
+    steps_first_epoch: 80
+    steps_per_epoch: 80
     sample_weights: null
     batch_size: 1
     grad_acc_steps: 8

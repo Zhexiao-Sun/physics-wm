@@ -11,15 +11,15 @@ denoiser:
   mask_gain_train: 1.0  
 
   mask_gain_infer: 0.45 
-  mask_w_blue: 0.55  # surrounding vehicles
-  mask_w_green: 0.45  # ego vehicle
+  mask_w_blue: 0.55  # 1.0 for training, 0.55 for inference
+  mask_w_green: 0.45  # 0.8 for training, 0.45 for inference
 
   mask_sigma_global_ratio: 0.35  # global Gaussian sigma ratio
   mask_sigma_ego_scale: 0.50  # ego radial sigma scale
   mask_sigma_min_px: 2.0  
   mask_downsample_mode: bicubic 
 
-  mask_dropout_train: 0.30  
+  mask_dropout_train: 0.25
 
   inner_model:
     _target_: models.diffusion.InnerModelConfig

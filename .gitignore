@@ -221,7 +221,7 @@ images/*
 highway_dataset/
 highwayenv_data_processed/
 outputs/
-*.mp4
+#*.mp4
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

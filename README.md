@@ -4,6 +4,8 @@
 
 🌍 [Project Page](https://physics-wm.github.io/) • 🤓 [Paper](https://arxiv.org/abs/2509.12437) 
 
+https://github.com/user-attachments/assets/264217a4-4454-40b2-ae65-2c935ccdcf46
+
 ![comparison](./assets/teaser.png)
 
 <br/>

@@ -4,8 +4,6 @@
 
 🌍 [Project Page](https://physics-wm.github.io/) • 🤓 [Paper](https://arxiv.org/abs/2509.12437) 
 
-https://github.com/user-attachments/assets/264217a4-4454-40b2-ae65-2c935ccdcf46
-
 ![comparison](./assets/teaser.png)
 
 <br/>
@@ -41,6 +39,10 @@ The following implementation is based on [DIAMOND](https://github.com/eloialonso
     ```
 
 When the download completes, press Enter to start. Use WASD and Space to control.
+
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/264217a4-4454-40b2-ae65-2c935ccdcf46" width="80%" controls></video>
+</div>
 
 - The default fast config runs best on a CUDA GPU (>12 FPS on an RTX 4080 laptop). The model also runs faster if compiled (>21 FPS on an RTX 4080 Laptop).
 
@@ -83,10 +85,22 @@ The provided configuration took around 18 hours on an RTX 4090.
 - Adjust Soft Mask related weights used during training and inference in [`piwm.yaml`](config/agent/piwm.yaml).
 
     Our released model uses:
-    ```
-    mask_w_blue:  1.0 for training, 0.55 for inference
-    mask_w_green: 0.8 for training, 0.45 for inference
-    ```
+    - Training:
+        ```yaml
+        mask_gain_train: 1.0
+        
+        mask_gain_infer: 0.45       # not used in training
+        mask_w_blue: 1.0 
+        mask_w_green: 0.8 
+        ```
+    - Inference:
+        ```yaml
+        mask_gain_train: 1.0        # not used in inference
+
+        mask_gain_infer: 0.45
+        mask_w_blue: 0.55  
+        mask_w_green: 0.45        
+        ```
 
 - Enable zero-shot Warm Start to inject contextual information at inference time and improve stability for smaller models:
 
